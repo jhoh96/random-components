@@ -11,11 +11,10 @@ $main-color: #481063;
 
 .progress-bar-diamond-container {
   position: relative;
-  min-height: 26px;
   display: flex;
   justify-content: end !important;
-  padding-bottom: 2px;
   transition: width 0.8s ease-in-out;
+  height: 30px;
 }
 
 .progress-bar-filler {
@@ -34,49 +33,29 @@ $main-color: #481063;
 
 // Shapes & Stuff
 #diamond {
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-bottom-color: $main-color;
-  position: relative;
-  margin-right: -10px;
-  top: -10px;
-  transition: all 0.5s linear;;
+  background: $main-color;
+  height: 11px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 11px;
+  // margin-top: 10px;
+  margin: 10px -5px 0px 0px;
+  // animation-name: spin;
+  // animation-duration: 5000ms;
+  // animation-iteration-count: infinite;
+  // animation-timing-function: linear;
 }
-#diamond:after {
-  content: "";
-  position: absolute;
-  left: -10px;
-  top: 10px;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-top-color: $main-color;
-  transition: all 0.5s linear;
+
+#diamond[animation="1"] {
+  animation: spin 5s ease-in-out;
 }
 
 // ANIMATIONS
-@-moz-keyframes spin {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
 @keyframes spin {
   from {
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(230deg);
   }
 }
