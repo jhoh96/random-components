@@ -7,15 +7,8 @@ import ProgressBar from "./general/components/ProgressBar";
 import "./containerStyles.scss";
 
 export default function TestContainer() {
-  const [aniToggle, setAniToggle] = useState<Boolean>();
+  const [aniToggle, setAniToggle] = useState<Boolean>(); // animation toggle for all moving / animated components
   const [completed, setCompleted] = useState<Number>(10);
-  const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
-
-  const handleClick = () => {
-    setCompleted(completed.valueOf() + 30);
-    // console.log(completed);
-    // console.log(aniToggle);
-  };
 
   // awaits 1 second to activate animation, then turns it off
   useEffect(() => {
@@ -30,7 +23,11 @@ export default function TestContainer() {
       <div className="test-container-header">
         <h4>Header</h4>
         <ProgressBar completed={completed} toggle={aniToggle}></ProgressBar>
-        <button onClick={() => handleClick()}>add</button>
+
+        {/* Buttons for testing */}
+        <button onClick={() => setCompleted(completed.valueOf() + 30)}>
+          add
+        </button>
         <button onClick={() => setCompleted(10)}>reset</button>
       </div>
     </div>

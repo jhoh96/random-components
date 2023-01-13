@@ -35,19 +35,18 @@ $main-color: #481063;
 #diamond {
   background: $main-color;
   height: 11px;
-  text-align: center;
   transform: rotate(45deg);
   width: 11px;
-  // margin-top: 10px;
   margin: 10px -5px 0px 0px;
-  // animation-name: spin;
-  // animation-duration: 5000ms;
-  // animation-iteration-count: infinite;
-  // animation-timing-function: linear;
 }
 
-#diamond[animation="1"] {
-  animation: spin 5s ease-in-out;
+// TODO:
+#diamond[animate="true"] {
+  // forward animation
+}
+
+#diamond[animate="false"] {
+  // backwards animation
 }
 
 // ANIMATIONS
