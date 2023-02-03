@@ -26,7 +26,6 @@ export default function DeliveryContainer() {
     <div>
       <div>
         <input
-          style={{ height: "50px", width: "200px" }}
           placeholder="tracking-number"
           value={trackingNum}
           onChange={(e) => setTrackingNum(e.target.value)}
@@ -40,9 +39,7 @@ export default function DeliveryContainer() {
           Track
         </button>
       </div>
-      <div style={{ width: "100vw", height: "100%" }}>
-        {trackingInfo ? trackingInfo : <></>}
-      </div>
+      <div>{trackingInfo ? trackingInfo : <></>}</div>
     </div>
   );
 }
