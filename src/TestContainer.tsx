@@ -23,7 +23,6 @@ export default function TestContainer() {
       <div className="test-container-header">
         <h4>Header</h4>
         <ProgressBar completed={completed} toggle={aniToggle}></ProgressBar>
-
         {/* Buttons for testing */}
         <button onClick={() => setCompleted(completed.valueOf() + 30)}>
           add
