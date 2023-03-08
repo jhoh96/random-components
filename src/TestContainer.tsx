@@ -6,9 +6,12 @@ import ProgressBar from "./general/components/ProgressBar";
 // css
 import "./containerStyles.scss";
 
+// for testing purposes
+import SurveyNextButton from "./general/components/buttons/SurveyNextButton";
+
 export default function TestContainer() {
-  const [aniToggle, setAniToggle] = useState<Boolean>(); // animation toggle for all moving / animated components
-  const [completed, setCompleted] = useState<Number>(10);
+  const [aniToggle, setAniToggle] = useState<Boolean>(); // animation toggle for all moving / animated components. Triggers on render-rerender
+  const [completed, setCompleted] = useState<Number>(2); // progress towards completion. Max 100.
 
   // awaits 1 second to activate animation, then turns it off
   useEffect(() => {
@@ -29,6 +32,7 @@ export default function TestContainer() {
         </button>
         <button onClick={() => setCompleted(10)}>reset</button>
       </div>
+      <SurveyNextButton background={false} fixed={true} />
     </div>
   );
 }

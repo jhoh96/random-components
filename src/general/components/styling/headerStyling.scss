@@ -1,0 +1,11 @@
+.mobile-header-container {
+  width: 100vw !important;
+  height: 55px !important;
+  display: grid;
+  place-items: center;
+
+  img {
+    width: 60px;
+    height: auto;
+  }
+}

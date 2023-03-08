@@ -1,14 +1,10 @@
-import "./App.css";
-
 // components * containers
-import TestContainer from "./TestContainer";
-import DeliveryContainer from "./DeliveryContainer";
+import UserInitialSurvey from "./mobile/survey/UserInitialSurvey";
 
 function App() {
   return (
     <>
-      {/* <TestContainer></TestContainer> */}
-      <DeliveryContainer></DeliveryContainer>
+      <UserInitialSurvey></UserInitialSurvey>
     </>
   );
 }
