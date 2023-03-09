@@ -3,7 +3,11 @@ import { BasicQuestion } from "./Basic/BasicQuestion";
 
 // assets
 
+// testing purposes
+import SurveyButtonSquare from "../components/SurveyButtonSquare";
+
 // css
+import "../styling/questionStyling.scss";
 
 interface QuestionConfig {
   number?: Number;
@@ -18,20 +22,66 @@ export default function Questions(props: any) {
   const { question } = props;
   const [number, setNumber] = useState<number>();
   const [title, setTitle] = useState<string>();
+  const [answer, setAnswer] = useState<string>("");
+  const [buttonType, setButtonType] = useState<string>("");
+  const [answerCount, setAnswerCount] = useState<number>(0);
 
   useEffect(() => {
     const basicQuestion = new BasicQuestion(
       question.questionNumber,
-      question.questionTitle
+      question.questionTitle,
+      question.questionType,
+      question.answerCount,
+      question.buttonType
     );
     setNumber(basicQuestion.getQuestionNumber());
     setTitle(basicQuestion.getQuestionTitle());
+    setButtonType(basicQuestion.getButtonType());
+    setAnswerCount(basicQuestion.getAnswerCount());
   });
 
+  const DisplayButtons = () => {
+    if (buttonType === "square") {
+      for (let i = 0; i < answerCount; i++) {
+        return <SurveyButtonSquare></SurveyButtonSquare>;
+      }
+    }
+    return <></>;
+  };
+
   return (
-    <div>
-      <div>{number}</div>
-      <div>{title}</div>
+    <div className="survey-question-mobile">
+      {/* <div>{number}</div> */}
+      <div className="survey-question-title">{title}</div>
+      <div
+        className="button-container"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "15px",
+          marginLeft: "5px",
+          marginTop: "45px",
+        }}
+      >
+        {/* <form style={{ display: "flex", flexDirection: "column" }}>
+          <input
+            defaultValue={answer}
+            onChange={(e) => {
+              setAnswer(e.target.value);
+            }}
+          ></input>
+          <button
+            style={{ height: "25px", width: "25px" }}
+            onClick={(e) => {
+              e.preventDefault();
+              console.log(answer);
+            }}
+          ></button>
+        </form> */}
+        <div className="survey-question-buttons">
+          <DisplayButtons></DisplayButtons>
+        </div>
+      </div>
     </div>
   );
 }

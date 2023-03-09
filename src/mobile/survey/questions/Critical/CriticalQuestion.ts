@@ -1,3 +1,4 @@
+// TODO: extend Basic Question
 export class CriticalQuestion {
   private questionNumber: number;
   private questionTitle: string;

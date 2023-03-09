@@ -7,6 +7,8 @@ import ProgressBar from "../../../general/components/ProgressBar";
 import VenusHeaderMobile from "../../../general/components/headers/VenusHeaderMobile";
 import Questions from "../questions/Questions";
 
+// testing purposes
+
 // css
 import "../styling/frameStyling.scss";
 
@@ -26,23 +28,35 @@ export default function SurveyFrame() {
   }, [completed]);
 
   // MOCK DATA for Testing Purposes
-  //   const mockData = {
-  //     questionNumber: 1,
-  //     questionTitle: "탈모를 느끼는 부위를 선택해 주세요.",
-  //   };
   const mockData = [
     {
       questionNumber: 1,
       questionTitle: "탈모를 느끼는 부위를 선택해 주세요.",
+      questionType: "single",
+      answerCount: 5,
+      buttonType: "square",
     },
-    // {
-    //   questionNumber: 2,
-    //   questionTitle: "탈모를 느끼는 부위를 선택해 주세요.",
-    // },
-    // {
-    //   questionNumber: 3,
-    //   questionTitle: "탈모를 느끼는 부위를 선택해 주세요.",
-    // },
+    {
+      questionNumber: 2,
+      questionTitle: "언제부터 탈모증상을 느끼기 시작했나요?",
+      questionType: "single",
+      answerCount: 5,
+      buttonType: "rect",
+    },
+    {
+      questionNumber: 3,
+      questionTitle: "최근 두피가 가렵거나 예민해진 것 같나요?",
+      questionType: "multiple",
+      answerCount: 2,
+      buttonType: "square",
+    },
+    {
+      questionNumber: 4,
+      questionTitle: "최근 두피가 가렵거나 예민해진 것 같나요?",
+      questionType: "single",
+      answerCount: 4,
+      buttonType: "square",
+    },
   ];
 
   return (
@@ -52,7 +66,7 @@ export default function SurveyFrame() {
       <div className="survey-container">
         {/* <Questions question={mockData} /> */}
         {mockData.map((item, key) => {
-          return <Questions question={item}></Questions>;
+          return <Questions key={key} question={item}></Questions>;
         })}
       </div>
     </div>

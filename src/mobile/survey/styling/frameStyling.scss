@@ -1,8 +1,8 @@
 .survey-frame-container {
   box-sizing: border-box !important;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  overflow-x: hidden;
+  overflow: hidden !important;
   padding: 40px 24px 0px 24px;
 
   display: flex;

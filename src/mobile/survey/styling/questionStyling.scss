@@ -1,0 +1,18 @@
+.survey-question-mobile {
+  border: 2px solid blue;
+  height: 100vh;
+  overflow: hidden !important;
+
+  .survey-question-title {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 35px;
+    color: #481063;
+  }
+
+  .survey-question-buttons {
+    border: 2px solid red;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

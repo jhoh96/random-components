@@ -5,12 +5,24 @@
 export class BasicQuestion {
   private questionNumber: number;
   private questionTitle: string;
+  private questionType: string;
   private answers: any[];
+  private answerCount: number;
+  private buttonType: string;
 
-  public constructor(questionNumber: number, questionTitle: string) {
+  public constructor(
+    questionNumber: number,
+    questionTitle: string,
+    questionType: string,
+    answerCount: number,
+    buttonType: string
+  ) {
     this.questionNumber = questionNumber;
     this.questionTitle = questionTitle;
+    this.questionType = questionType;
     this.answers = [];
+    this.answerCount = answerCount;
+    this.buttonType = buttonType;
   }
 
   public getQuestionNumber(): number {
@@ -19,6 +31,18 @@ export class BasicQuestion {
 
   public getQuestionTitle(): string {
     return this.questionTitle;
+  }
+
+  public getQuestionType(): string {
+    return this.questionType;
+  }
+
+  public getAnswerCount(): number {
+    return this.answerCount;
+  }
+
+  public getButtonType(): string {
+    return this.buttonType;
   }
 
   // this in case we have questions that require multiple answers
@@ -31,3 +55,5 @@ export class BasicQuestion {
     this.answers.push(answerObject);
   }
 }
+
+class Answers extends BasicQuestion {}
