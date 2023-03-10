@@ -25,6 +25,7 @@ export default function Questions(props: any) {
   const [answer, setAnswer] = useState<string>("");
   const [buttonType, setButtonType] = useState<string>("");
   const [answerCount, setAnswerCount] = useState<number>(0);
+  const [buttons, setButtons] = useState<any>([]);
 
   useEffect(() => {
     const basicQuestion = new BasicQuestion(
@@ -38,16 +39,28 @@ export default function Questions(props: any) {
     setTitle(basicQuestion.getQuestionTitle());
     setButtonType(basicQuestion.getButtonType());
     setAnswerCount(basicQuestion.getAnswerCount());
+    for (let i = 0; i < answerCount; i++) {
+      buttons.push(i);
+    }
   });
 
-  const DisplayButtons = () => {
-    if (buttonType === "square") {
-      for (let i = 0; i < answerCount; i++) {
-        return <SurveyButtonSquare></SurveyButtonSquare>;
-      }
-    }
-    return <></>;
-  };
+  // TODO: Store answer object inside answers array in questions
+  // each answer obj in array can have a boolean value
+  // each clicked (true) can be assigned different styles
+
+  //   const DisplayButtons = () => {
+  //     let counter = [];
+  //     for (let i = 0; i < answerCount; i++) {
+  //       counter.push(i);
+  //     }
+
+  //     if (buttonType === "square") {
+  //       counter.map((key) => {
+  //         return <SurveyButtonSquare key={key}></SurveyButtonSquare>;
+  //       });
+  //     }
+  //     return <></>;
+  //   };
 
   return (
     <div className="survey-question-mobile">
@@ -78,9 +91,7 @@ export default function Questions(props: any) {
             }}
           ></button>
         </form> */}
-        <div className="survey-question-buttons">
-          <DisplayButtons></DisplayButtons>
-        </div>
+        <div className="survey-question-buttons"></div>
       </div>
     </div>
   );
