@@ -14,13 +14,14 @@ export class BasicQuestion {
     questionNumber: number,
     questionTitle: string,
     questionType: string,
+    answers: any[],
     answerCount: number,
     buttonType: string
   ) {
     this.questionNumber = questionNumber;
     this.questionTitle = questionTitle;
     this.questionType = questionType;
-    this.answers = [];
+    this.answers = answers;
     this.answerCount = answerCount;
     this.buttonType = buttonType;
   }

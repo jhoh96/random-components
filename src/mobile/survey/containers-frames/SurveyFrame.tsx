@@ -6,6 +6,7 @@ import { motion, useIsPresent } from "framer-motion";
 import ProgressBar from "../../../general/components/ProgressBar";
 import VenusHeaderMobile from "../../../general/components/headers/VenusHeaderMobile";
 import Questions from "../questions/Questions";
+import { BasicQuestion } from "../questions/Basic/BasicQuestion";
 
 // testing purposes
 
@@ -28,40 +29,59 @@ export default function SurveyFrame() {
   }, [completed]);
 
   // MOCK DATA for Testing Purposes
-  const mockData = [
-    {
-      questionNumber: 1,
-      questionTitle: "탈모를 느끼는 부위를 선택해 주세요.",
-      questionType: "single",
-      answers: ["yo", "this", "is", "a", "test"],
-      answerCount: 5,
-      buttonType: "square",
-    },
-    {
-      questionNumber: 2,
-      questionTitle: "언제부터 탈모증상을 느끼기 시작했나요?",
-      questionType: "single",
-      answers: ["yo", "this", "is", "a", "test"],
-      answerCount: 5,
-      buttonType: "rect",
-    },
-    {
-      questionNumber: 3,
-      questionTitle: "최근 두피가 가렵거나 예민해진 것 같나요?",
-      questionType: "multiple",
-      answers: ["yo", "this", "is", "a", "test"],
-      answerCount: 2,
-      buttonType: "square",
-    },
-    {
-      questionNumber: 4,
-      questionTitle: "최근 두피가 가렵거나 예민해진 것 같나요?",
-      questionType: "single",
-      answers: ["yo", "this", "is", "a", "test"],
-      answerCount: 4,
-      buttonType: "square",
-    },
-  ];
+  let questionOne = new BasicQuestion(
+    1,
+    "탈모를 느끼는 부위를 선택해 주세요.",
+    "single",
+    ["yo", "this", "is", "a", "test"],
+    5,
+    "square"
+  );
+
+  let questionTwo = new BasicQuestion(
+    2,
+    "언제부터 탈모증상을 느끼기 시작했나요?",
+    "single",
+    ["yo", "this", "is", "another", "test"],
+    5,
+    "rect"
+  );
+
+  const mockData = [questionOne, questionTwo];
+  // const mockData = [
+  //   {
+  //     questionNumber: 1,
+  //     questionTitle: "탈모를 느끼는 부위를 선택해 주세요.",
+  //     questionType: "single",
+  //     answers: ["yo", "this", "is", "a", "test"],
+  //     answerCount: 5,
+  //     buttonType: "square",
+  //   },
+  //   {
+  //     questionNumber: 2,
+  //     questionTitle: "언제부터 탈모증상을 느끼기 시작했나요?",
+  //     questionType: "single",
+  //     answers: ["yo", "this", "is", "a", "test"],
+  //     answerCount: 5,
+  //     buttonType: "rect",
+  //   },
+  //   {
+  //     questionNumber: 3,
+  //     questionTitle: "최근 두피가 가렵거나 예민해진 것 같나요?",
+  //     questionType: "multiple",
+  //     answers: ["yo", "this", "is", "a", "test"],
+  //     answerCount: 2,
+  //     buttonType: "square",
+  //   },
+  //   {
+  //     questionNumber: 4,
+  //     questionTitle: "최근 두피가 가렵거나 예민해진 것 같나요?",
+  //     questionType: "single",
+  //     answers: ["yo", "this", "is", "a", "test"],
+  //     answerCount: 4,
+  //     buttonType: "square",
+  //   },
+  // ];
 
   return (
     <div className="survey-frame-container">
@@ -69,7 +89,7 @@ export default function SurveyFrame() {
       <ProgressBar completed={completed} toggle={aniToggle}></ProgressBar>
       <div className="survey-container">
         {/* <Questions question={mockData} /> */}
-        {mockData.map((item, key) => {
+        {mockData.map((item: any, key) => {
           return <Questions key={key} question={item}></Questions>;
         })}
       </div>

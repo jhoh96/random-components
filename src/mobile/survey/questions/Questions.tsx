@@ -9,69 +9,49 @@ import SurveyButtonSquare from "../components/SurveyButtonSquare";
 // css
 import "../styling/questionStyling.scss";
 
-interface QuestionConfig {
-  number?: Number;
-  title?: String;
-}
+// TODO: Questions component shouldn't be the one calling new instance of BasicQuestion.
+// SurveyFrame should call basic question objects, populate array then push props to this component
+type questionProps = {
+  question: BasicQuestion;
+};
 
 /**
  * Default question component
  * @returns formatted question / survey questionnaires with getters & setters
  */
-export default function Questions(props: any) {
+export default function Questions(props: questionProps) {
   const { question } = props;
+  const [questionNumber, setQuestionNumber] = useState<number>(0);
   const [number, setNumber] = useState<number>();
   const [title, setTitle] = useState<string>();
-  const [answer, setAnswer] = useState<string>("");
-  const [buttonType, setButtonType] = useState<string>("");
-  const [answerCount, setAnswerCount] = useState<number>(0);
-  const [buttons, setButtons] = useState<any>([]);
+  const [answers, setAnswers] = useState<any>([]);
+  const [answerCount, setAnswerCount] = useState<number>();
+  const [buttonType, setButtonType] = useState<string>();
 
   useEffect(() => {
-    const basicQuestion = new BasicQuestion(
-      question.questionNumber,
-      question.questionTitle,
-      question.questionType,
-      question.answerCount,
-      question.buttonType
-    );
-    setNumber(basicQuestion.getQuestionNumber());
-    setTitle(basicQuestion.getQuestionTitle());
-    setButtonType(basicQuestion.getButtonType());
-    setAnswerCount(basicQuestion.getAnswerCount());
-    for (let i = 0; i < answerCount; i++) {
-      buttons.push(i);
-    }
+    setQuestionNumber(question.getQuestionNumber());
+    setNumber(question.getQuestionNumber());
+    setTitle(question.getQuestionTitle());
+    setAnswers(question.getAnswers());
+    setAnswerCount(question.getAnswerCount());
+    setButtonType(question.getButtonType());
+
+    // console.log(buttonType)
   });
 
   // TODO: Store answer object inside answers array in questions
   // each answer obj in array can have a boolean value
   // each clicked (true) can be assigned different styles
 
-  //   const DisplayButtons = () => {
-  //     let counter = [];
-  //     for (let i = 0; i < answerCount; i++) {
-  //       counter.push(i);
-  //     }
-
-  //     if (buttonType === "square") {
-  //       counter.map((key) => {
-  //         return <SurveyButtonSquare key={key}></SurveyButtonSquare>;
-  //       });
-  //     }
-  //     return <></>;
-  //   };
-
-  const AnswerButtons = (type: any) => {
-    if (type === "square") {
+  const AnswerButtons = () => {
+    if (buttonType === "square") {
       return <SurveyButtonSquare></SurveyButtonSquare>;
     }
-    return <>yo</>;
+    return <>test</>;
   };
 
   return (
     <div className="survey-question-mobile">
-      {/* <div>{number}</div> */}
       <div className="survey-question-title">{title}</div>
       <div
         className="button-container"
@@ -83,24 +63,9 @@ export default function Questions(props: any) {
           marginTop: "45px",
         }}
       >
-        {/* <form style={{ display: "flex", flexDirection: "column" }}>
-          <input
-            defaultValue={answer}
-            onChange={(e) => {
-              setAnswer(e.target.value);
-            }}
-          ></input>
-          <button
-            style={{ height: "25px", width: "25px" }}
-            onClick={(e) => {
-              e.preventDefault();
-              console.log(answer);
-            }}
-          ></button>
-        </form> */}
         <div className="survey-question-buttons">
-          {question.answers.map((item: string) => {
-            return <AnswerButtons type={buttonType}></AnswerButtons>;
+          {answers.map((item: any) => {
+            return <AnswerButtons ></AnswerButtons>;
           })}
         </div>
       </div>

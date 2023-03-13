@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 // css
 import "../styling/buttonStyling.scss";
 
-export default function SurveyButtonSquare() {
+export default function SurveyButtonSquare(props: any) {
+  const { text } = props;
   return (
     <div className="survey-btn-container">
       <button
@@ -15,7 +16,7 @@ export default function SurveyButtonSquare() {
         <div className="survey-btn-sq-img">
           <img src="" />
         </div>
-        <div className="survey-btn-sq-text">{"text"}</div>
+        <div className="survey-btn-sq-text">{text}</div>
       </button>
     </div>
   );
