@@ -62,6 +62,13 @@ export default function Questions(props: any) {
   //     return <></>;
   //   };
 
+  const AnswerButtons = (type: any) => {
+    if (type === "square") {
+      return <SurveyButtonSquare></SurveyButtonSquare>;
+    }
+    return <>yo</>;
+  };
+
   return (
     <div className="survey-question-mobile">
       {/* <div>{number}</div> */}
@@ -91,7 +98,11 @@ export default function Questions(props: any) {
             }}
           ></button>
         </form> */}
-        <div className="survey-question-buttons"></div>
+        <div className="survey-question-buttons">
+          {question.answers.map((item: string) => {
+            return <AnswerButtons type={buttonType}></AnswerButtons>;
+          })}
+        </div>
       </div>
     </div>
   );
