@@ -45,6 +45,10 @@ export class BasicQuestion {
     return this.buttonType;
   }
 
+  public getAnswers(): any[] {
+    return this.answers;
+  }
+
   // this in case we have questions that require multiple answers
   public setAnswers(value: any): any {
     let answerObject = {
