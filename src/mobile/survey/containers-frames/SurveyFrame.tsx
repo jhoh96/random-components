@@ -13,6 +13,8 @@ import { BasicQuestion } from "../questions/Basic/BasicQuestion";
 // css
 import "../styling/frameStyling.scss";
 
+// type
+
 export default function SurveyFrame() {
   const [aniToggle, setAniToggle] = useState<boolean>(); // animation toggle for all moving / animated components. Triggers on render-rerender
   const [completed, setCompleted] = useState<number>(2); // progress towards completion. Max 100.
@@ -34,11 +36,11 @@ export default function SurveyFrame() {
     "탈모를 느끼는 부위를 선택해 주세요.",
     "single",
     [
-      { 가르마: false },
-      { 정수리: false },
-      { 전반적: false },
-      { 원형탈모: false },
-      { 해어라인: false },
+      { text: "가르마", answer: false },
+      { text: "정수리", answer: false },
+      { text: "전반적", answer: false },
+      { text: "원형탈모", answer: false },
+      { text: "헤어라인", answer: false },
     ],
     "square"
   );
@@ -48,13 +50,13 @@ export default function SurveyFrame() {
     "언제부터 탈모증상을 느끼기 시작했나요?",
     "single",
     [
-      { yo: false },
-      { this: false },
-      { is: false },
-      { another: false },
-      { test: false },
+      { text: "yo", answer: false },
+      { text: "this", answer: false },
+      { text: "is", answer: false },
+      { text: "just a", answer: false },
+      { text: "test", answer: false },
     ],
-    "square"
+    "rect"
   );
 
   const mockData = [questionOne];
@@ -67,9 +69,13 @@ export default function SurveyFrame() {
       ></VenusHeaderMobile>
       <ProgressBar completed={completed} toggle={aniToggle}></ProgressBar>
       <div className="survey-container">
-        {/* <Questions question={mockData} /> */}
-        {mockData.map((item: any, key) => {
-          return <Questions key={key} question={item}></Questions>;
+        {/* typeof BasicQuestion only */}
+        {mockData.map((item: BasicQuestion, key) => {
+          return (
+            <div key={key}>
+              <Questions question={item}></Questions>
+            </div>
+          );
         })}
       </div>
     </div>
