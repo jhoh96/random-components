@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BasicQuestion, AnswerType } from "./Basic/BasicQuestion";
-import { checkAnswer } from "../questions/util/util";
+import { checkAnswer, ensure } from "../questions/util/util";
 
 // assets
 
@@ -23,7 +23,7 @@ export default function Questions(props: any) {
   const [questionNumber, setQuestionNumber] = useState<number>(0);
   const [number, setNumber] = useState<number>();
   const [title, setTitle] = useState<string>();
-  const [answers, setAnswers] = useState<any>([]);
+  const [answers, setAnswers] = useState<AnswerType[]>([]); // TODO: Ensure function to make sure array is always populated
   const [buttonType, setButtonType] = useState<string>();
 
   useEffect(() => {
@@ -34,22 +34,28 @@ export default function Questions(props: any) {
     setButtonType(question.getButtonType());
   });
 
-  useEffect(() => {
-    // console.log(answers);
-  });
-
   // TODO: Store answer object inside answers array in questions
   // each answer obj in array can have a boolean value
   // each clicked (true) can be assigned different styles
   const AnswerButtons: React.FC<{ answers: AnswerType }> = (answers) => {
     if (buttonType === "square") {
-      return <SurveyButtonSquare answers={answers}></SurveyButtonSquare>;
+      return (
+        <SurveyButtonSquare
+          answers={answers}
+          checkAnswer={checkAnswer}
+        ></SurveyButtonSquare>
+      );
     }
     if (buttonType === "rect") {
-      return <SurveyButtonRect></SurveyButtonRect>;
+      return <SurveyButtonRect answers={answers}></SurveyButtonRect>;
     }
     return <></>;
   };
+
+  useEffect(() => {
+    checkAnswer(question.getAnswers(), question.getQuestionType());
+    console.log('something changed');
+  }, [answers]);
 
   return (
     <div className="survey-question-mobile">
@@ -58,10 +64,10 @@ export default function Questions(props: any) {
         {` [Number: ${questionNumber}]`}
       </div>
       <div className={`button-container-${buttonType}`}>
-        {answers.map((answers: AnswerType, key: any) => {
+        {answers.map((item: AnswerType, key: any) => {
           return (
             <div key={key}>
-              <AnswerButtons answers={answers}></AnswerButtons>
+              <AnswerButtons answers={item}></AnswerButtons>
             </div>
           );
         })}

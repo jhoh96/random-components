@@ -30,6 +30,15 @@ export default function SurveyFrame() {
     }, 1000);
   }, [completed]);
 
+  // TODO : Import Questions from server here :
+  useEffect(() => {
+    // 
+    // 
+    // 
+    // 
+    // 
+  },[])
+
   // MOCK DATA for Testing Purposes
   let questionOne = new BasicQuestion(
     1,

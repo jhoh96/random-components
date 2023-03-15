@@ -5,19 +5,22 @@ import { AnswerType } from "../questions/Basic/BasicQuestion";
 // css
 import "../styling/buttonStyling.scss";
 
-export default function SurveyButtonSquare(answers: any) {
-  const { props } = answers.answers.answers
+// TODO SET OBJECT TYPE OF ANSWERTYPE
+export default function SurveyButtonSquare({ answers }: any) {
   const [selected, setSelected] = useState(false);
-  const [title, setTitle] = useState<string[]>();
+  const [title, setTitle] = useState<string>();
 
   useEffect(() => {
-    // setTitle(Object.keys(text.text));
-    // setTitle(answers.answers.text)
-    // console.log(answers)
+    // console.log(answers.answers);
+    setTitle(answers.answers.text);
   }, []);
 
   // click handler dependent on questionType
-  const handleClick = () => {};
+  // TODO : FIX THIS S
+  const handleClick = () => {
+    answers.answers.answer = !answers.answers.answer;
+    setSelected(!selected);
+  };
 
   return (
     <div className="survey-btn-container-sq">

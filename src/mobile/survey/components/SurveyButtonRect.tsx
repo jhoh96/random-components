@@ -1,8 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 
-export default function SurveyButtonRect(props: any) {
-  const { text } = props;
+export default function SurveyButtonRect({ answers }: any) {
   const [selected, setSelected] = useState(false);
 
   return (
@@ -13,7 +12,7 @@ export default function SurveyButtonRect(props: any) {
         }}
         style={{ border: selected ? "2px solid #D02094" : "" }}
       >
-        <div>{text}</div>
+        <div>{}</div>
       </button>
     </div>
   );
