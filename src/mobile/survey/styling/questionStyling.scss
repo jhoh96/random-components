@@ -1,18 +1,22 @@
 .survey-question-mobile {
-  border: 2px solid blue;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  position: relative;
   overflow: hidden !important;
 
   .survey-question-title {
     font-weight: 700;
     font-size: 25px;
     line-height: 35px;
+    max-width: 80vw;
     color: #481063;
+    margin-bottom: 25px;
+    text-overflow: ellipsis;
   }
 
-  .survey-question-buttons {
-    border: 2px solid red;
-    display: flex;
-    flex-wrap: wrap;
+  .button-container-square {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 12px;
   }
 }

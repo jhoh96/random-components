@@ -5,6 +5,7 @@ import { BasicQuestion } from "./Basic/BasicQuestion";
 
 // testing purposes
 import SurveyButtonSquare from "../components/SurveyButtonSquare";
+import SurveyButtonRect from "../components/SurveyButtonRect";
 
 // css
 import "../styling/questionStyling.scss";
@@ -25,7 +26,6 @@ export default function Questions(props: questionProps) {
   const [number, setNumber] = useState<number>();
   const [title, setTitle] = useState<string>();
   const [answers, setAnswers] = useState<any>([]);
-  const [answerCount, setAnswerCount] = useState<number>();
   const [buttonType, setButtonType] = useState<string>();
 
   useEffect(() => {
@@ -33,7 +33,6 @@ export default function Questions(props: questionProps) {
     setNumber(question.getQuestionNumber());
     setTitle(question.getQuestionTitle());
     setAnswers(question.getAnswers());
-    setAnswerCount(question.getAnswerCount());
     setButtonType(question.getButtonType());
 
     // console.log(buttonType)
@@ -43,31 +42,25 @@ export default function Questions(props: questionProps) {
   // each answer obj in array can have a boolean value
   // each clicked (true) can be assigned different styles
 
-  const AnswerButtons = () => {
+  const AnswerButtons = (text: any) => {
     if (buttonType === "square") {
-      return <SurveyButtonSquare></SurveyButtonSquare>;
+      return <SurveyButtonSquare text={text}></SurveyButtonSquare>;
     }
-    return <>test</>;
+
+    if (buttonType === "rect") {
+      return <SurveyButtonRect></SurveyButtonRect>;
+    }
+
+    return <></>;
   };
 
   return (
     <div className="survey-question-mobile">
       <div className="survey-question-title">{title}</div>
-      <div
-        className="button-container"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "15px",
-          marginLeft: "5px",
-          marginTop: "45px",
-        }}
-      >
-        <div className="survey-question-buttons">
-          {answers.map((item: any) => {
-            return <AnswerButtons ></AnswerButtons>;
-          })}
-        </div>
+      <div className={`button-container-${buttonType}`}>
+        {answers.map((item: any, key: any) => {
+          return <AnswerButtons key={key} text={item}></AnswerButtons>;
+        })}
       </div>
     </div>
   );

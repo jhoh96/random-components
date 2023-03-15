@@ -1,20 +1,17 @@
 .survey-frame-container {
   box-sizing: border-box !important;
   height: 100%;
-  width: 100vw;
+  width: 100%;
   overflow: hidden !important;
-  padding: 40px 24px 0px 24px;
-
+  padding: 50px 24px 0px 24px;
   display: flex;
   flex-direction: column;
   place-items: center;
+  position: relative;
 }
 
 .survey-container {
-  border: 5px solid red;
-  width: 100%;
-  flex-grow: 1;
-  margin-top: 40px;
-  margin: 5vh 0 15vh 0;
   max-height: 600px;
+  width: 100%;
+  margin-top: 36px;
 }

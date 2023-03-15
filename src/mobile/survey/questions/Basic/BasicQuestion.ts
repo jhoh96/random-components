@@ -7,7 +7,6 @@ export class BasicQuestion {
   private questionTitle: string;
   private questionType: string;
   private answers: any[];
-  private answerCount: number;
   private buttonType: string;
 
   public constructor(
@@ -15,14 +14,12 @@ export class BasicQuestion {
     questionTitle: string,
     questionType: string,
     answers: any[],
-    answerCount: number,
     buttonType: string
   ) {
     this.questionNumber = questionNumber;
     this.questionTitle = questionTitle;
     this.questionType = questionType;
     this.answers = answers;
-    this.answerCount = answerCount;
     this.buttonType = buttonType;
   }
 
@@ -36,10 +33,6 @@ export class BasicQuestion {
 
   public getQuestionType(): string {
     return this.questionType;
-  }
-
-  public getAnswerCount(): number {
-    return this.answerCount;
   }
 
   public getButtonType(): string {
